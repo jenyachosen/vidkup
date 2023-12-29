@@ -5,7 +5,7 @@ describe('formatting Post date function', () => {
     expect(date('1998-10-18', 'en')).toBe('October 18, 1998');
   });
   it('should be return `id` format', () => {
-    expect(date('1998-10-18', 'id')).toBe('18 Oktober 1998');
+    expect(date('1998-10-18', 'uk')).toBe('18 Oktober 1998');
   });
   it('should be return `en` format with custom format', () => {
     expect(date('1998-10-18', 'en', 'DD MMMM YYYY')).toBe('18 October 1998');

@@ -3,11 +3,11 @@ import createContentLocales from './locales';
 const withLocales = createContentLocales({
   test: {
     en: 'Test!',
-    id: 'Tes!'
+    uk: 'Тест!'
   },
   hello: {
     en: 'Hello',
-    id: 'Halo'
+    uk: 'Привіт'
   }
 });
 
@@ -18,8 +18,8 @@ describe('convert content locales data function', () => {
     expect(enLocales.hello).toBe('Hello');
   });
   it('should be return `id` locale properly', () => {
-    const idLocales = withLocales('id');
-    expect(idLocales.test).toBe('Tes!');
-    expect(idLocales.hello).toBe('Halo');
+    const idLocales = withLocales('uk');
+    expect(idLocales.test).toBe('Тест!');
+    expect(idLocales.hello).toBe('Привіт');
   });
 });

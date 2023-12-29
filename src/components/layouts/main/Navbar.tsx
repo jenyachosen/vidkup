@@ -1,4 +1,12 @@
-import { Fragment, FunctionComponent, PropsWithChildren, ReactNode, useCallback, useMemo, useState } from 'react';
+import {
+  Fragment,
+  FunctionComponent,
+  PropsWithChildren,
+  ReactNode,
+  useCallback,
+  useMemo,
+  useState
+} from 'react';
 import { useRouter } from 'next/router';
 
 import Link from '@/components/base/Link';
@@ -32,33 +40,30 @@ interface LocaleItemProps {
 }
 
 export interface Props {
-  title?: ReactNode|string;
+  title?: ReactNode | string;
   className?: string;
   localeChange?: boolean;
   onLocaleChange?: LocaleItemProps['onLocaleChange'];
 }
 
 export const menus = [
-  { label: 'Now', href: '/now' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'About', href: '/about' }
+  { label: 'Home', href: '/' },
+  { label: 'Classes', href: '/classes' },
+  { label: 'Floorball', href: '/floorball' },
+  { label: 'Media', href: '/media' },
+  { label: 'Stuff', href: '/stuff' },
+  { label: 'Contact', href: '/contact' }
 ];
 
 export const i18nList = new Map([
   ['en', <>🇺🇸&nbsp;&nbsp;EN</>],
-  ['id', <>🇮🇩&nbsp;&nbsp;ID</>]
+  ['uk', <>🇺🇦&nbsp;&nbsp;UK</>]
 ]);
 
-const LocaleItem: FunctionComponent<PropsWithChildren<LocaleItemProps>> = (props) => {
-  const {
-    children,
-    code,
-    active,
-    pathname,
-    asPath,
-    onLocaleChange
-  } = props;
+const LocaleItem: FunctionComponent<PropsWithChildren<LocaleItemProps>> = (
+  props
+) => {
+  const { children, code, active, pathname, asPath, onLocaleChange } = props;
   const locales = useMemo(() => onLocaleChange?.(code) ?? {}, []);
   return (
     <Link
@@ -93,9 +98,12 @@ const Navbar: FunctionComponent<Props> = (props) => {
       : 'bg-primary shadow-md-bottom dark:bg-dark-60';
   }, [transparent]);
 
-  const localeChanges = useCallback((code: string) => {
-    return onLocaleChange?.(code as I18nLocales) ?? {};
-  }, [onLocaleChange]);
+  const localeChanges = useCallback(
+    (code: string) => {
+      return onLocaleChange?.(code as I18nLocales) ?? {};
+    },
+    [onLocaleChange]
+  );
 
   useScrollListener(({ scrollY }) => {
     setTransparent(scrollY < 5);
@@ -135,7 +143,11 @@ const Navbar: FunctionComponent<Props> = (props) => {
                 btnClassName="text-sm rounded-4 md:text-base"
               >
                 {Array.from(i18nList).map(([code, label]) => (
-                  <Dropdown.Item key={code} className="text-sm md:text-base" active={code === locale}>
+                  <Dropdown.Item
+                    key={code}
+                    className="text-sm md:text-base"
+                    active={code === locale}
+                  >
                     <LocaleItem
                       active={code === locale}
                       pathname={pathname}
@@ -157,7 +169,7 @@ const Navbar: FunctionComponent<Props> = (props) => {
                   href={href}
                   className={clsxm(
                     'font-bold text-lg mx-8 transition-all duration-200 hover:scale-105 hover:no-underline',
-                    idx === (menus.length - 1) ? 'mr-0' : '',
+                    idx === menus.length - 1 ? 'mr-0' : '',
                     pathname === href && 'pointer-events-none',
                     textShadowClass
                   )}
@@ -165,7 +177,8 @@ const Navbar: FunctionComponent<Props> = (props) => {
                   <span
                     className={clsxm({
                       'text-primary-2 dark:text-accent-2': pathname === href,
-                      'text-white dark:text-white hover:util--text-shadow-white': pathname !== href
+                      'text-white dark:text-white hover:util--text-shadow-white':
+                        pathname !== href
                     })}
                   >
                     {label}
@@ -177,7 +190,9 @@ const Navbar: FunctionComponent<Props> = (props) => {
               <SVG
                 stroke="white"
                 src={IconHamburger}
-                className={`cursor-pointer transition-all duration-150 ${modalClass ? 'scale-50 opacity-0' : 'scale-100 opacity-100'}`}
+                className={`cursor-pointer transition-all duration-150 ${
+                  modalClass ? 'scale-50 opacity-0' : 'scale-100 opacity-100'
+                }`}
                 onClick={modalToggler}
                 size={32}
               />
@@ -191,11 +206,14 @@ const Navbar: FunctionComponent<Props> = (props) => {
         className={clsxm(
           styles['header-mobile'],
           'bg-white self-start justify-self-center opacity-0 -mt-52 dark:bg-dark-60',
-          modalClass,
+          modalClass
         )}
       >
         <div className="flex items-center justify-between">
-          <Link href="/" className="font-courgette transition-all duration-200 font-bold text-xl text-dark dark:text-white hover:no-underline hover:scale-105 hover:util--text-shadow-white">
+          <Link
+            href="/"
+            className="font-courgette transition-all duration-200 font-bold text-xl text-dark dark:text-white hover:no-underline hover:scale-105 hover:util--text-shadow-white"
+          >
             {title}
           </Link>
           <ButtonClose onClick={modalToggler} />
@@ -203,9 +221,10 @@ const Navbar: FunctionComponent<Props> = (props) => {
         <hr className="my-8" />
         <div className="flex flex-col justify-center">
           {menus.map(({ label, href }, idx) => {
-            const menuClass = pathname === href
-              ? 'pointer-events-none text-primary-2 dark:text-accent-2'
-              : 'text-dark dark:text-white';
+            const menuClass =
+              pathname === href
+                ? 'pointer-events-none text-primary-2 dark:text-accent-2'
+                : 'text-dark dark:text-white';
             return (
               <Link
                 key={href}
@@ -214,7 +233,7 @@ const Navbar: FunctionComponent<Props> = (props) => {
                 className={clsxm(
                   'group flex justify-between items-center font-bold my-4 transition-all duration-100 hover:translate-x-8 active:scale-100',
                   menuClass,
-                  idx === (menus.length - 1) ? 'mb-0' : ''
+                  idx === menus.length - 1 ? 'mb-0' : ''
                 )}
               >
                 {label}

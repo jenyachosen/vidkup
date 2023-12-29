@@ -9,13 +9,15 @@ interface Props {
   path: string;
   title: string;
   identifier: string;
-  locale?: 'en'|'id'|string;
+  locale?: 'en' | 'uk' | string;
 }
 
 const Disqus: FunctionComponent<Props> = (props) => {
   const { title, locale, path, identifier } = props;
   const [theme] = useAppTheme();
-  const [isDark, setIsDark] = useState(theme.current === 'light' ? false : true);
+  const [isDark, setIsDark] = useState(
+    theme.current === 'light' ? false : true
+  );
 
   useUpdated(() => {
     setTimeout(() => {
@@ -33,7 +35,7 @@ const Disqus: FunctionComponent<Props> = (props) => {
             title: `${title} | ${AUTHOR_NAME}`,
             url: `${PRODUCTION_URL}/${path}`,
             identifier: `${DISQUS_SHORTNAME}_${identifier}`,
-            language: locale === 'id' ? 'id' : undefined
+            language: locale === 'uk' ? 'uk' : undefined
           }}
         />
       </LazyLoad>

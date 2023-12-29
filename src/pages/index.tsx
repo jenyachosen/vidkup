@@ -1,11 +1,26 @@
-import type { GetStaticPropsContext, GetStaticPropsResult, NextPage } from 'next';
+import type {
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+  NextPage
+} from 'next';
 import { Fragment, useMemo } from 'react';
 import { CardHero, Button } from '@/components/base';
-import { Banner, Navbar, Footer, Content, withMainLayoutPage } from '@/components/layouts';
+import {
+  Banner,
+  Navbar,
+  Footer,
+  Content,
+  withMainLayoutPage
+} from '@/components/layouts';
 import BlogCardList from '@/components/layouts/blog/CardList';
 import ContentParser from '@/components/base/Content/Parser';
 import { DEFAULT_LOCALE } from '@/configs/env';
-import { ContentMeta, getBlogList, getContentMultiLanguage, MDContent } from '@/server/content-parser';
+import {
+  ContentMeta,
+  getBlogList,
+  getContentMultiLanguage,
+  MDContent
+} from '@/server/content-parser';
 import generateRSSFeed from '@/server/feed-rss';
 import createContentLocales from '@/utils/helpers/locales';
 
@@ -15,10 +30,10 @@ type Props = {
   locale: string;
 };
 
-export const getStaticProps = async(ctx: GetStaticPropsContext): Promise<GetStaticPropsResult<Props>> => {
-  const {
-    locale = DEFAULT_LOCALE
-  } = ctx;
+export const getStaticProps = async (
+  ctx: GetStaticPropsContext
+): Promise<GetStaticPropsResult<Props>> => {
+  const { locale = DEFAULT_LOCALE } = ctx;
   const [contents, { contents: blogs }] = await Promise.all([
     getContentMultiLanguage('home', locale),
     getBlogList(locale, { limit: 4 }),
@@ -36,40 +51,45 @@ export const getStaticProps = async(ctx: GetStaticPropsContext): Promise<GetStat
 const withLocales = createContentLocales({
   myBlog: {
     en: 'Read my blog',
-    id: 'Baca blog saya'
+    uk: 'Baca blog saya'
   },
   myPortfolio: {
     en: 'See my portfolio',
-    id: 'Lihat portfolio saya'
+    uk: 'Lihat portfolio saya'
   },
   aboutMe: {
     en: 'Learn more about me',
-    id: 'Cari tahu tentang saya'
+    uk: 'Cari tahu tentang saya'
   },
   thansksVisit: {
     en: 'Thanks for visiting me',
-    id: 'Terima kasih sudah berkunjung'
+    uk: 'Terima kasih sudah berkunjung'
   },
   recentPosts: {
     en: 'Recent posts',
-    id: 'Tulisan terbaru'
+    uk: 'Tulisan terbaru'
   },
   seeMore: {
     en: 'See more posts',
-    id: 'Lihat tulisan lainnya'
+    uk: 'Lihat tulisan lainnya'
   }
 });
 
-const btnClasses = 'text-white text-sm sm:text-base dark:text-white rounded-8 my-4 hover:shadow-lg active:shadow-sm hover:-translate-y-2';
+const btnClasses =
+  'text-white text-sm sm:text-base dark:text-white rounded-8 my-4 hover:shadow-lg active:shadow-sm hover:-translate-y-2';
 
 const HomePage: NextPage<Props> = (props) => {
   const { contents, blogs, locale } = props;
   const { meta, content } = contents;
   const locales = useMemo(() => withLocales(locale), [locale]);
+  // debugger;
   return (
     <Fragment>
       <Navbar localeChange />
-      <Banner bgImage="/media/banners/1.jpg" className="font-courgette text-white util--text-shadow text-center">
+      <Banner
+        bgImage="/media/banners/1.jpg"
+        className="font-courgette text-white util--text-shadow text-center"
+      >
         <div className="container -mt-48">
           <h1 className="font-bold text-4xl mb-8 text-white dark:text-white animate-[scale_.25s_ease-in-out]">
             {meta.title}
@@ -81,9 +101,7 @@ const HomePage: NextPage<Props> = (props) => {
       </Banner>
       <Content>
         <CardHero className="min-h-[0px]">
-          <ContentParser className="text-center">
-            {content}
-          </ContentParser>
+          <ContentParser className="text-center">{content}</ContentParser>
           <div className="flex justify-center items-center flex-wrap text-center my-16">
             <Button
               disableHover
@@ -112,9 +130,7 @@ const HomePage: NextPage<Props> = (props) => {
           </p>
         </CardHero>
         <div className="flex justify-center items-center flex-col my-40 opacity-0 animate-[y-b-25_.5s_ease-in-out_.75s_1_normal_forwards]">
-          <h3 className="font-courgette">
-            {locales.recentPosts}
-          </h3>
+          <h3 className="font-courgette">{locales.recentPosts}</h3>
           <hr className="w-full mt-16" />
           <BlogCardList contents={blogs} locale={locale} />
           <Button

@@ -11,10 +11,10 @@ export const APP_ENVIRONMENT =
 export const IS_DEV = APP_ENVIRONMENT !== 'production';
 
 /* Site Information */
-export const SITE_NAME = 'Site of Redemption church';
+export const SITE_NAME = 'Redemption church';
 export const PRODUCTION_URL = 'https://vidkup.com';
 export const BASE_URL = IS_DEV ? 'http://localhost:3000' : PRODUCTION_URL;
-export const DEFAULT_LOCALE = 'en';
+export const DEFAULT_LOCALE = 'uk';
 export const ANALYTICS_ID = '';
 export const BLOG_PAGINATION_LIMIT = 6;
 export const DISQUS_SHORTNAME = 'vidkup';
