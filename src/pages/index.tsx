@@ -51,27 +51,27 @@ export const getStaticProps = async (
 const withLocales = createContentLocales({
   myBlog: {
     en: 'Read my blog',
-    uk: 'Baca blog saya'
+    uk: 'Читати мій блог'
   },
   myPortfolio: {
     en: 'See my portfolio',
-    uk: 'Lihat portfolio saya'
+    uk: 'Подивитись портфоліо'
   },
   aboutMe: {
     en: 'Learn more about me',
-    uk: 'Cari tahu tentang saya'
+    uk: 'Дізнатись більше про мене'
   },
   thansksVisit: {
     en: 'Thanks for visiting me',
-    uk: 'Terima kasih sudah berkunjung'
+    uk: 'Дякую що навідались до моєї сторінки'
   },
   recentPosts: {
     en: 'Recent posts',
-    uk: 'Tulisan terbaru'
+    uk: 'Недавні пости'
   },
   seeMore: {
     en: 'See more posts',
-    uk: 'Lihat tulisan lainnya'
+    uk: 'Подивитись більше постів'
   }
 });
 
@@ -82,12 +82,15 @@ const HomePage: NextPage<Props> = (props) => {
   const { contents, blogs, locale } = props;
   const { meta, content } = contents;
   const locales = useMemo(() => withLocales(locale), [locale]);
+  console.log('================Home==============');
+  console.log({ meta, content });
+  console.log('====================================');
   // debugger;
   return (
     <Fragment>
       <Navbar localeChange />
       <Banner
-        bgImage="/media/banners/1.jpg"
+        bgImage="/media/banners/b1.jpg"
         className="font-courgette text-white util--text-shadow text-center"
       >
         <div className="container -mt-48">
@@ -113,8 +116,8 @@ const HomePage: NextPage<Props> = (props) => {
             <Button
               disableHover
               text={locales.aboutMe}
-              href="/about"
-              data-umami-event="homepage_see-about"
+              href="/classes"
+              data-umami-event="homepage_see-classes"
               className={`${btnClasses} bg-accent active:shadow-accent-2 hover:shadow-accent-2 mx-8`}
             />
             <Button

@@ -27,6 +27,7 @@ import IconArrowForward from '$/assets/icons/tools/arrow-forward.svg';
 import styles from './styles.module.css';
 import useAppTheme from '@/hooks/stores/useAppTheme';
 import { I18nLocales } from '@/types/contents';
+import createContentLocales from '@/utils/helpers/locales';
 
 interface LocaleItemProps {
   code: I18nLocales;
@@ -225,6 +226,8 @@ const Navbar: FunctionComponent<Props> = (props) => {
               pathname === href
                 ? 'pointer-events-none text-primary-2 dark:text-accent-2'
                 : 'text-dark dark:text-white';
+
+            // debugger;
             return (
               <Link
                 key={href}

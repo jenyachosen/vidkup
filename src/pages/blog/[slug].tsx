@@ -1,12 +1,27 @@
-import type { GetStaticPathsResult, GetStaticPropsContext, GetStaticPropsResult, NextPage } from 'next';
+import type {
+  GetStaticPathsResult,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+  NextPage
+} from 'next';
 import dynamic from 'next/dynamic';
 import type { I18nLocales } from '@/types/contents';
 import { Fragment, Suspense, useCallback, useMemo } from 'react';
-import { getAllBlogPaths, MDContent, getContent } from '@/server/content-parser';
+import {
+  getAllBlogPaths,
+  MDContent,
+  getContent
+} from '@/server/content-parser';
 import CardHero from '@/components/base/Card/Hero';
 import ContentInfo from '@/components/base/Content/Info';
 import ContentParser from '@/components/base/Content/Parser';
-import { Banner, Content, Footer, Navbar, withMainLayoutPage } from '@/components/layouts';
+import {
+  Banner,
+  Content,
+  Footer,
+  Navbar,
+  withMainLayoutPage
+} from '@/components/layouts';
 import { DEFAULT_LOCALE } from '@/configs/env';
 
 type Props = {
@@ -14,7 +29,7 @@ type Props = {
   locale: string;
 };
 
-export const getStaticPaths = async(): Promise<GetStaticPathsResult> => {
+export const getStaticPaths = async (): Promise<GetStaticPathsResult> => {
   const paths = await getAllBlogPaths();
   return {
     paths,
@@ -22,11 +37,10 @@ export const getStaticPaths = async(): Promise<GetStaticPathsResult> => {
   };
 };
 
-export const getStaticProps = async(ctx: GetStaticPropsContext): Promise<GetStaticPropsResult<Props>> => {
-  const {
-    locale = DEFAULT_LOCALE,
-    params
-  } = ctx;
+export const getStaticProps = async (
+  ctx: GetStaticPropsContext
+): Promise<GetStaticPropsResult<Props>> => {
+  const { locale = DEFAULT_LOCALE, params } = ctx;
   const { slug } = params as any;
   const contents = await getContent(slug, locale);
   if (contents) {
@@ -43,11 +57,13 @@ export const getStaticProps = async(ctx: GetStaticPropsContext): Promise<GetStat
 };
 
 const Share = dynamic(() => import('@/components/base/Content/Share'), {
-  suspense: true
+  suspense: true,
+  ssr: false
 });
 
 const Disqus = dynamic(() => import('@/components/base/Content/Disqus'), {
-  suspense: true
+  suspense: true,
+  ssr: false
 });
 
 const BlogDetailPage: NextPage<Props> = (props) => {
@@ -61,16 +77,16 @@ const BlogDetailPage: NextPage<Props> = (props) => {
     return _allSlug.length > 1 && _allSlug.every(Boolean);
   }, [meta.slug]);
 
-  const onLocaleChange = useCallback((i18nLocale: I18nLocales) => ({
-    asPath: meta.slug[i18nLocale]
-  }), []);
+  const onLocaleChange = useCallback(
+    (i18nLocale: I18nLocales) => ({
+      asPath: meta.slug[i18nLocale]
+    }),
+    []
+  );
 
   return (
     <Fragment>
-      <Navbar
-        localeChange={localeChange}
-        onLocaleChange={onLocaleChange}
-      />
+      <Navbar localeChange={localeChange} onLocaleChange={onLocaleChange} />
       <Banner
         bgImage={meta.image}
         className="font-courgette text-white util--text-shadow text-center"
@@ -94,32 +110,27 @@ const BlogDetailPage: NextPage<Props> = (props) => {
       </Banner>
       <Content>
         <CardHero>
-          <ContentParser>
-            {content}
-          </ContentParser>
+          <ContentParser>{content}</ContentParser>
         </CardHero>
-        <script async defer src="https://platform.twitter.com/widgets.js" charSet="utf-8" />
+        <script
+          async
+          defer
+          src="https://platform.twitter.com/widgets.js"
+          charSet="utf-8"
+        />
         <Suspense
           fallback={
             <div className="mt-40">
-              <h4 className="text-center mb-12">
-                Loading...
-              </h4>
+              <h4 className="text-center mb-12">Loading...</h4>
             </div>
           }
         >
-          <Share
-            path={postPath}
-            meta={meta}
-            locale={locale}
-          />
+          <Share path={postPath} meta={meta} locale={locale} />
         </Suspense>
         <Suspense
           fallback={
             <div className="container max-w-5xl mt-40 mx-auto">
-              <h4 className="text-center mb-12">
-                Loading Disqus...
-              </h4>
+              <h4 className="text-center mb-12">Loading Disqus...</h4>
             </div>
           }
         >

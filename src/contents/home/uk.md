@@ -1,15 +1,16 @@
 ---
-title: "Hai 👋, Saya Gading!"
+title: 'Вірна Церква Нового Завіту'
 date: 2022-06-01
-description: "Insinyur Perangkat Lunak dari Palembang, Indonesia 🇮🇩"
-keywords: "gading's hideout, gading homepage, gading, sutan gading, sutan gading fadhillah nasution, sutan, sutanlab, gading.dev, gading dev, persembunyian gading, website gading"
-image: "/media/banners/1.jpg"
+description: 'Наша місія полягає в тому, щоб ділитися любов’ю та євангелією Ісуса Христа з нашою громадою та світом. 🇺🇦'
+keywords: ''
+image: '/media/banners/1.jpg'
 ---
 
-Saya sekarang bekerja *full-time* secara *remote* di [Alterra](https://alterra.id).
+Ми прагнемо використовувати лише Біблію як правило та керівництво в практиці нашої християнської віри. Це означає, що Боже Слово є тим, що керує нашим поклонінням, моральним кодексом, організацією та загальним керівництвом у житті. Ми прагнемо простої істини його вчень, щоб створити просту віру в наших серцях, яка створює людей, які є просто християнами, не більше чи менше.
 
-Bersemangat untuk bereksplorasi tentang teknologi seluler dan web modern sambil mempertimbangkan *DX (Developer Experience)*, teknik, dan tren terbaru. Dan juga dapat menjadi pembelajar yang cepat dalam melakukan hal-hal baru dan membangun kerja tim yang baik.
+Кожен відвідувач є почесним гостем, а кожен член є дорогою частиною нашої християнської родини.
 
 ---
 
-Ya, kamu telah menemukan saya di *internet*. Jadi, mari lihat-lihat dan nikmati.
+Неділя, 31 грудня, 11:00 ранку
+Особисто та онлайн

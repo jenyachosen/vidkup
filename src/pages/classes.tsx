@@ -111,7 +111,8 @@ const PerformanceReportsMobile = () => (
 );
 
 const Disqus = dynamic(() => import('@/components/base/Content/Disqus'), {
-  suspense: true
+  suspense: true,
+  ssr: false
 });
 
 const AboutPage: NextPage<Props> = (props) => {
@@ -121,7 +122,7 @@ const AboutPage: NextPage<Props> = (props) => {
     <Fragment>
       <Navbar localeChange />
       <Banner
-        bgImage="/media/banners/8.jpg"
+        bgImage="/media/banners/b2.jpg"
         className="font-courgette text-white util--text-shadow text-center"
       >
         <div className="container -mt-48">

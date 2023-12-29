@@ -16,6 +16,7 @@ import { MDContent, getContentMultiLanguage } from '@/server/content-parser';
 import { Fragment, Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { DEFAULT_LOCALE } from '@/configs/env';
+import Disqus from '@/components/base/Content/Disqus';
 
 type Props = {
   contents: MDContent;
@@ -35,9 +36,10 @@ export const getStaticProps = async (
   };
 };
 
-const Disqus = dynamic(() => import('@/components/base/Content/Disqus'), {
-  suspense: true
-});
+// const Disqus = dynamic(() => import('@/components/base/Content/Disqus'), {
+//   suspense: true,
+//   ssr: false
+// });
 
 const NowPage: NextPage<Props> = (props) => {
   const { contents, locale } = props;

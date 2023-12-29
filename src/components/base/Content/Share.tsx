@@ -16,7 +16,7 @@ import createContentLocales from '@/utils/helpers/locales';
 interface Props {
   path: string;
   meta: ContentMeta;
-  locale: I18nLocales|string;
+  locale: I18nLocales | string;
 }
 
 type SocialShare = {
@@ -61,11 +61,12 @@ const socialShares: SocialShare[] = [
 const withLocales = createContentLocales({
   share: {
     en: 'Share',
-    id: 'Bagikan'
+    uk: 'Поділіться'
   }
 });
 
-const btnShareClasses = 'shadow-lg rounded-full p-12 mx-4 mb-12 hover:-mt-8 hover:scale-105';
+const btnShareClasses =
+  'shadow-lg rounded-full p-12 mx-4 mb-12 hover:-mt-8 hover:scale-105';
 
 const Share: FunctionComponent<Props> = (props) => {
   const { path, meta, locale } = props;
@@ -77,36 +78,39 @@ const Share: FunctionComponent<Props> = (props) => {
     const url = `${BASE_URL}/${path}`;
     const encodedDesc = encodeURIComponent(description);
     const encodedTitle = encodeURIComponent(title);
-    const hastags = tags.reduce((acc, cur) => `${acc}%23${cur.replace(/\s+/g, '_')} `, '').trim();
+    const hastags = tags
+      .reduce((acc, cur) => `${acc}%23${cur.replace(/\s+/g, '_')} `, '')
+      .trim();
     return {
-      'facebook': `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=%22${encodedDesc}%22%0A%0A${tags}`,
-      'linkedin': `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
-      'twitter': `https://twitter.com/intent/tweet?text=%22${encodedDesc}%22%20${url}%20via%20%40${AUTHOR_TWITTER}%0A%0A${hastags}`,
-      'tumblr': `https://www.tumblr.com/widgets/share/tool/preview?posttype=link&canonicalUrl=${url}&title=${encodedTitle}&caption=${encodedDesc}`,
-      'whatsapp': `https://api.whatsapp.com/send?text=%22${encodedDesc}%22%0A%0A${url}`,
-      'telegram': `https://telegram.me/share/url?url=${url}&text=%0A%22${encodedDesc}%22`
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=%22${encodedDesc}%22%0A%0A${tags}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+      twitter: `https://twitter.com/intent/tweet?text=%22${encodedDesc}%22%20${url}%20via%20%40${AUTHOR_TWITTER}%0A%0A${hastags}`,
+      tumblr: `https://www.tumblr.com/widgets/share/tool/preview?posttype=link&canonicalUrl=${url}&title=${encodedTitle}&caption=${encodedDesc}`,
+      whatsapp: `https://api.whatsapp.com/send?text=%22${encodedDesc}%22%0A%0A${url}`,
+      telegram: `https://telegram.me/share/url?url=${url}&text=%0A%22${encodedDesc}%22`
     };
   }, [path]);
 
-  const onShare = useCallback((social: SocialShare) => () => {
-    const socialId = social.label.substring(9).toLocaleLowerCase();
-    const shareUrl = (socialShareUrl as any)[socialId] || null;
-    if (shareUrl) {
-      createPopUp({
-        url: shareUrl,
-        title: social.label,
-        w: 600,
-        h: 600
-      });
-    }
-    return false;
-  }, [socialShareUrl]);
+  const onShare = useCallback(
+    (social: SocialShare) => () => {
+      const socialId = social.label.substring(9).toLocaleLowerCase();
+      const shareUrl = (socialShareUrl as any)[socialId] || null;
+      if (shareUrl) {
+        createPopUp({
+          url: shareUrl,
+          title: social.label,
+          w: 600,
+          h: 600
+        });
+      }
+      return false;
+    },
+    [socialShareUrl]
+  );
 
   return (
     <div className="mt-40">
-      <h4 className="text-center mb-12">
-        {locales.share}
-      </h4>
+      <h4 className="text-center mb-12">{locales.share}</h4>
       <div className="relative flex justify-center items-center flex-wrap">
         {socialShares.map((social) => (
           <Button
@@ -115,7 +119,9 @@ const Share: FunctionComponent<Props> = (props) => {
             key={social.label}
             onClick={onShare(social)}
             delay={300}
-            data-umami-event={`share-${social.label.substring(9).toLocaleLowerCase()}`}
+            data-umami-event={`share-${social.label
+              .substring(9)
+              .toLocaleLowerCase()}`}
             className={`${social.color} ${btnShareClasses}`}
           >
             <SVG fill="white" size={24} src={social.logo} />

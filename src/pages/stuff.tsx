@@ -111,7 +111,8 @@ const PerformanceReportsMobile = () => (
 );
 
 const Disqus = dynamic(() => import('@/components/base/Content/Disqus'), {
-  suspense: true
+  suspense: true,
+  ssr: false
 });
 
 const AboutPage: NextPage<Props> = (props) => {
