@@ -9,10 +9,10 @@ const CardHero: FunctionComponent<PropsWithChildren<CardProps>> = (props) => {
       {...cardProps}
       className={clsxm(
         className,
-        'shadow-xl max-w-5xl rounded-24 mx-auto -mt-80 dark:shadow-primary',
-        'py-24 px-28',
+        'shadow-xl max-w-7xl rounded-12 mx-auto -mt-80 dark:shadow-primary',
+        'py-12 px-14',
         'sm:py-36 sm:px-40',
-        'md:py-44 md:px-56',
+        'md:py-44 md:px-56'
       )}
     >
       {children}

@@ -1,4 +1,11 @@
-import { Fragment, FunctionComponent, PropsWithChildren, useCallback, useId, useMemo } from 'react';
+import {
+  Fragment,
+  FunctionComponent,
+  PropsWithChildren,
+  useCallback,
+  useId,
+  useMemo
+} from 'react';
 import NextLink from 'next/link';
 import Script, { ScriptProps } from 'next/script';
 import { getMDXComponent, MDXContentProps } from 'mdx-bundler/client';
@@ -37,9 +44,7 @@ const ContentImage: FunctionComponent<ContentImageProps> = (props) => {
         wrapperClassName="content-image items-center w-full rounded-8"
         className="mx-auto rounded-8 max-h-[500px] cursor-pointer"
       />
-      <span className="block text-center italic text-xs mt-8">
-        {alt}
-      </span>
+      <span className="block text-center italic text-xs mt-8">{alt}</span>
     </Fragment>
   );
 };
@@ -103,21 +108,24 @@ const ContentParser: FunctionComponent<PropsWithChildren<Props>> = (props) => {
 
   const Parser = useMemo(() => {
     return getMDXComponent(children as string);
+    // return <p>{children}</p>;
   }, [children]);
 
   return (
     <div className={clsxm('content-parser', styles.parser, className)}>
       <Parser
         {...otherProps}
-        components={{
-          ...components,
-          ...SharedComponents,
-          State,
-          TwitterScript,
-          a: SharedComponents.Link,
-          img: ContentImage,
-          NextImage: NextContentImage
-        } as any}
+        components={
+          {
+            ...components,
+            ...SharedComponents,
+            State,
+            TwitterScript,
+            a: SharedComponents.Link,
+            img: ContentImage,
+            NextImage: NextContentImage
+          } as any
+        }
       />
     </div>
   );

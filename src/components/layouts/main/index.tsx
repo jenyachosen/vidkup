@@ -5,25 +5,21 @@ import { SITE_NAME } from '@/configs/env';
 import { I18nLocales } from '@/types/contents';
 
 export interface Props {
-  locale?: I18nLocales|string;
+  locale?: I18nLocales | string;
   meta: HeadProps['meta'];
 }
 
 export type UnknownProps = Record<string, unknown>;
 
 const MainLayout: FunctionComponent<PropsWithChildren<Props>> = (props) => {
-  const {
-    children,
-    locale,
-    meta
-  } = props;
-  const title = meta?.title?.includes(SITE_NAME) ? meta?.title : `${meta?.title} | ${SITE_NAME}`;
+  const { children, locale, meta } = props;
+  const title = meta?.title?.includes(SITE_NAME)
+    ? meta?.title
+    : `${meta?.title} | ${SITE_NAME}`;
   return (
     <Fragment>
       <Head locale={locale} meta={{ ...meta, title }} />
-      <div className="flex flex-col min-h-screen">
-        {children}
-      </div>
+      <div className="flex flex-col min-h-screen">{children}</div>
     </Fragment>
   );
 };
@@ -35,14 +31,18 @@ const MainLayout: FunctionComponent<PropsWithChildren<Props>> = (props) => {
  * @returns - NextPage
  */
 export const withMainLayoutPage = <T extends UnknownProps>(
-  PageComponent: NextPage<T>, layoutProps: Props|((pageProps: T) => Props)
+  PageComponent: NextPage<T>,
+  layoutProps: Props | ((pageProps: T) => Props)
 ) => {
   const MainLayoutPage: FunctionComponent<T> = (pageProps) => {
     const layoutPropsWithPageProps = useMemo(() => {
       return typeof layoutProps === 'function'
-        ? layoutProps(pageProps) : layoutProps;
+        ? layoutProps(pageProps)
+        : layoutProps;
     }, [layoutProps, pageProps]);
-
+    // console.log('=============withMainLayoutPage============');
+    // console.log({ layoutPropsWithPageProps, pageProps });
+    // console.log('====================================');
     return (
       <MainLayout {...layoutPropsWithPageProps}>
         <PageComponent {...pageProps} />

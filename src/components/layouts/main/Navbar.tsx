@@ -47,18 +47,45 @@ export interface Props {
   onLocaleChange?: LocaleItemProps['onLocaleChange'];
 }
 
+const withLocales = createContentLocales({
+  home: {
+    en: 'Home',
+    uk: 'Головна'
+  },
+  classes: {
+    en: 'Сlasses',
+    uk: 'Класи'
+  },
+  floorball: {
+    en: 'Floorball',
+    uk: 'Флорбол'
+  },
+  media: {
+    en: 'Media',
+    uk: 'Медіа'
+  },
+  stuff: {
+    en: 'Stuff',
+    uk: 'Команда'
+  },
+  contact: {
+    en: 'Contact',
+    uk: 'Контакти'
+  }
+});
+
 export const menus = [
-  { label: 'Home', href: '/' },
-  { label: 'Classes', href: '/classes' },
-  { label: 'Floorball', href: '/floorball' },
-  { label: 'Media', href: '/media' },
-  { label: 'Stuff', href: '/stuff' },
-  { label: 'Contact', href: '/contact' }
+  { label: 'home', href: '/' },
+  { label: 'classes', href: '/classes' },
+  { label: 'floorball', href: '/floorball' },
+  { label: 'media', href: '/media' },
+  { label: 'stuff', href: '/stuff' },
+  { label: 'contact', href: '/contact' }
 ];
 
 export const i18nList = new Map([
-  ['en', <>🇺🇸&nbsp;&nbsp;EN</>],
-  ['uk', <>🇺🇦&nbsp;&nbsp;UK</>]
+  ['uk', <>🇺🇦&nbsp;&nbsp;UK</>],
+  ['en', <>🇺🇸&nbsp;&nbsp;EN</>]
 ]);
 
 const LocaleItem: FunctionComponent<PropsWithChildren<LocaleItemProps>> = (
@@ -88,6 +115,7 @@ const Navbar: FunctionComponent<Props> = (props) => {
   const [modalVisibility, modalToggler] = useToggler();
   const { pathname, locale, asPath } = useRouter();
   const [theme] = useAppTheme();
+  const locales = useMemo(() => withLocales(locale), [locale]);
 
   const textShadowClass = useMemo(() => {
     return transparent ? 'util--text-shadow' : '';
@@ -115,6 +143,10 @@ const Navbar: FunctionComponent<Props> = (props) => {
     setModalClass(newClass);
   }, [modalVisibility]);
 
+  // console.log('=============Navbar==============');
+  // console.log({ locale });
+  // console.log('====================================');
+
   return (
     <Fragment>
       <nav className={clsxm(styles.header, headerClass, className)}>
@@ -141,6 +173,7 @@ const Navbar: FunctionComponent<Props> = (props) => {
               <Dropdown
                 className="bg-transparent px-8 pt-[3px]"
                 title={i18nList.get(locale || DEFAULT_LOCALE)}
+                // title={i18nList.get(DEFAULT_LOCALE)}
                 btnClassName="text-sm rounded-4 md:text-base"
               >
                 {Array.from(i18nList).map(([code, label]) => (
@@ -164,28 +197,44 @@ const Navbar: FunctionComponent<Props> = (props) => {
             )}
             <SwitchTheme className={clsxm(textShadowClass, 'px-8')} />
             <div className="hidden md:block">
-              {menus.map(({ label, href }, idx) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className={clsxm(
-                    'font-bold text-lg mx-8 transition-all duration-200 hover:scale-105 hover:no-underline',
-                    idx === menus.length - 1 ? 'mr-0' : '',
-                    pathname === href && 'pointer-events-none',
-                    textShadowClass
-                  )}
-                >
-                  <span
-                    className={clsxm({
-                      'text-primary-2 dark:text-accent-2': pathname === href,
-                      'text-white dark:text-white hover:util--text-shadow-white':
-                        pathname !== href
-                    })}
+              {menus.map(({ label, href }, idx) => {
+                type NavNames = Record<
+                  | 'home'
+                  | 'classes'
+                  | 'floorball'
+                  | 'media'
+                  | 'stuff'
+                  | 'contact',
+                  string
+                >;
+                const locale = locales[label as keyof NavNames];
+                // console.log('=============Navbar================');
+                // console.log({ locale, label });
+                // console.log('====================================');
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    className={clsxm(
+                      'font-bold text-lg mx-8 transition-all duration-200 hover:scale-105 hover:no-underline',
+                      idx === menus.length - 1 ? 'mr-0' : '',
+                      pathname === href && 'pointer-events-none',
+                      textShadowClass
+                    )}
                   >
-                    {label}
-                  </span>
-                </Link>
-              ))}
+                    <span
+                      className={clsxm({
+                        'text-primary-2 dark:text-accent-2': pathname === href,
+                        'text-white dark:text-white hover:util--text-shadow-white':
+                          pathname !== href
+                      })}
+                    >
+                      {/* {label} */}
+                      {locale}
+                    </span>
+                  </Link>
+                );
+              })}
             </div>
             <div className="block md:hidden">
               <SVG

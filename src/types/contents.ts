@@ -1,6 +1,6 @@
 export enum I18n {
-  en = 'en_US',
   uk = 'uk_UA',
+  en = 'en_US'
 }
 
 export type I18nLocales = keyof typeof I18n;

@@ -4,7 +4,7 @@ import type {
   NextPage
 } from 'next';
 import { Fragment, useMemo } from 'react';
-import { CardHero, Button } from '@/components/base';
+import { CardHero, Button, SVG } from '@/components/base';
 import {
   Banner,
   Navbar,
@@ -23,6 +23,7 @@ import {
 } from '@/server/content-parser';
 import generateRSSFeed from '@/server/feed-rss';
 import createContentLocales from '@/utils/helpers/locales';
+import { liveYoutube } from '@/constants';
 
 type Props = {
   contents: MDContent;
@@ -82,9 +83,9 @@ const HomePage: NextPage<Props> = (props) => {
   const { contents, blogs, locale } = props;
   const { meta, content } = contents;
   const locales = useMemo(() => withLocales(locale), [locale]);
-  console.log('================Home==============');
-  console.log({ meta, content });
-  console.log('====================================');
+  // console.log('================Home==============');
+  // console.log({ meta, content, locales, locale });
+  // console.log('====================================');
   // debugger;
   return (
     <Fragment>
@@ -97,14 +98,30 @@ const HomePage: NextPage<Props> = (props) => {
           <h1 className="font-bold text-4xl mb-8 text-white dark:text-white animate-[scale_.25s_ease-in-out]">
             {meta.title}
           </h1>
-          <p className="text-lg px-8 text-white dark:text-white opacity-0 animate-[y-b-25_.3s_ease-in-out_.2s_1_normal_forwards]">
+          <p className="text-2xl px-8 text-white dark:text-white opacity-0 animate-[y-b-25_.3s_ease-in-out_.2s_1_normal_forwards]">
             {meta.description}”
           </p>
         </div>
       </Banner>
       <Content>
         <CardHero className="min-h-[0px]">
-          <ContentParser className="text-center">{content}</ContentParser>
+          <ContentParser className="text-2xl text-center">
+            {content}
+          </ContentParser>
+          <div className="flex flex-wrap justify-center items-center my-20 lg:my-0">
+            <Button
+              label={`Visit author ${liveYoutube.color
+                .split(' ')[0]
+                .substring(3)}`}
+              disableHover
+              key={liveYoutube.url}
+              href={liveYoutube.url}
+              delay={300}
+              className={`${liveYoutube.color} shadow-lg rounded-8 p-12 mx-4 my-4 hover:-translate-y-4 hover:scale-105`}
+            >
+              <SVG fill="white" size={14} src={liveYoutube.logo} />
+            </Button>
+          </div>
           <div className="flex justify-center items-center flex-wrap text-center my-16">
             <Button
               disableHover
@@ -145,7 +162,7 @@ const HomePage: NextPage<Props> = (props) => {
           </Button>
         </div>
       </Content>
-      <Footer />
+      <Footer locale={locale} />
     </Fragment>
   );
 };
@@ -156,7 +173,7 @@ export default withMainLayoutPage(HomePage, (props) => {
   return {
     locale,
     meta: {
-      title: 'Sutan Gading Fadhillah Nasution',
+      title: 'We are believers to Jesus',
       slug: '',
       date: meta.date,
       description: meta.description,

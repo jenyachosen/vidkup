@@ -19,13 +19,16 @@
     "app:generate:content:threads": "npm run ts-node src/server/threads/get-contents.ts"
   },
   "dependencies": {
+    "@nextui-org/react": "^2.2.9",
     "@vercel/og": "^0.0.27",
     "disqus-react": "^1.1.5",
+    "framer-motion": "^10.16.16",
     "next": "^14.0.4",
     "nextjs-progressbar": "^0.0.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-lazy-load-image-component": "^1.5.6",
+    "react-lite-youtube-embed": "^2.4.0",
     "react-medium-image-zoom": "^4.4.3",
     "react-nanny": "^2.15.0",
     "react-parallax": "^3.5.1",

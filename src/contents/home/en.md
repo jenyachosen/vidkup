@@ -12,5 +12,4 @@ Every visitor is an honored guest and every member is a cherished part of our Ch
 
 ---
 
-Sunday Dec. 31st, 11:00am
-In-Person and Online
+**Sunday Dec. 31st, 11:00am In-Person and Onlin**

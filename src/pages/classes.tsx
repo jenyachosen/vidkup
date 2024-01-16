@@ -26,7 +26,8 @@ import IconMail from '$/assets/icons/tools/mail.svg';
 import IconBriefcase from '$/assets/icons/tools/briefcase.svg';
 import imgReportDesktop from '$/assets/images/reports/desktop.svg?url';
 import imgReportMobile from '$/assets/images/reports/mobile.svg?url';
-import imgProfile from '$/assets/images/authors/gading-talks.jpeg';
+// import imgProfile from '$/assets/images/authors/gading-talks.jpeg';
+import imgProfile from '$/media/banners/1.jpg';
 
 type Props = {
   contents: MDContent;
@@ -118,6 +119,46 @@ const Disqus = dynamic(() => import('@/components/base/Content/Disqus'), {
 const AboutPage: NextPage<Props> = (props) => {
   const { contents, locale } = props;
   const { meta, content } = contents;
+
+  const team = [
+    {
+      avatar:
+        'https://images.unsplash.com/photo-1579017331263-ef82f0bbc748?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=685&q=80',
+      name: 'Martiana dialan',
+      title: 'Product designer'
+    },
+    {
+      avatar:
+        'https://images.unsplash.com/photo-1623605931891-d5b95ee98459?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80',
+      name: 'Micheal colorand',
+      title: 'Software engineer'
+    },
+    {
+      avatar:
+        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+      name: 'Brown Luis',
+      title: 'Full stack engineer'
+    },
+    {
+      avatar:
+        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+      name: 'Lysa sandiago',
+      title: 'Head of designers'
+    },
+    {
+      avatar:
+        'https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+      name: 'Daniel martin',
+      title: 'Product designer'
+    },
+    {
+      avatar:
+        'https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80',
+      name: 'Vicky tanson',
+      title: 'Product manager'
+    }
+  ];
+
   return (
     <Fragment>
       <Navbar localeChange />
@@ -136,43 +177,43 @@ const AboutPage: NextPage<Props> = (props) => {
       </Banner>
       <Content>
         <CardHero>
-          <div className="relative flex justify-around items-start mb-24 md:mb-32 md:-mx-36">
-            <LeftDesc />
-            <div className="-mt-100 w-[180px] h-[180px] flex flex-1 items-center justify-center opacity-0 animate-[y-t-25_.5s_ease-in-out_.5s_1_normal_forwards]">
-              <div className="rounded-full overflow-hidden transition-all shadow-lg hover:shadow-xl hover:-mt-12 active:shadow-md active:scale-95 dark:active:shadow-accent dark:hover:shadow-accent">
-                <Image
-                  className="rounded-full cursor-grab active:cursor-grabbing"
-                  src={imgProfile}
-                  alt={AUTHOR_NAME}
-                  width={180}
-                  height={180}
-                  delayLoad={750}
-                />
+          <section className="py-14">
+            <div className="max-w-screen-xl mx-auto px-4 md:px-8">
+              <div className="max-w-xl mx-auto sm:text-center">
+                <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
+                  Classes
+                </h3>
+                <p className="text-gray-600 mt-3">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown.
+                </p>
+              </div>
+              <div className="mt-12">
+                <ul className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+                  {team.map((item, idx) => (
+                    <li key={idx}>
+                      <div className="w-full h-60 sm:h-52 md:h-56">
+                        <Image
+                          src={item.avatar}
+                          className="w-full h-full object-cover object-center shadow-md rounded-xl"
+                          alt=""
+                          height={260}
+                          width="100%"
+                        />
+                      </div>
+                      <div className="mt-4">
+                        <h4 className="text-lg text-gray-700 font-semibold">
+                          {item.name}
+                        </h4>
+                        <p className="text-indigo-600">{item.title}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
-            <RightDesc />
-          </div>
-          <div>
-            <div className="mb-32 md:hidden sm:-mt-68">
-              <RightDesc className="flex h-[auto] justify-around sm:justify-between sm:px-32 mb-32" />
-              <LeftDesc className="flex h-[auto]" />
-            </div>
-            <h3 className="text-center font-semibold mb-36">
-              Sutan{' '}
-              <span className="text-primary dark:text-accent-2 hover:cursor-pointer hover:underline underline-offset-4">
-                Gading
-              </span>{' '}
-              Fadhillah Nasution
-            </h3>
-            <ContentParser
-              components={{
-                PerformanceReportsDesktop,
-                PerformanceReportsMobile
-              }}
-            >
-              {content}
-            </ContentParser>
-          </div>
+          </section>
         </CardHero>
         <Suspense
           fallback={
@@ -181,12 +222,12 @@ const AboutPage: NextPage<Props> = (props) => {
             </div>
           }
         >
-          <Disqus
+          {/* <Disqus
             path="classes"
             identifier="classes"
             title={meta.title}
             locale={locale}
-          />
+          /> */}
         </Suspense>
       </Content>
       <Footer />
