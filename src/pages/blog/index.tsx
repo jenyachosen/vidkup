@@ -1,4 +1,8 @@
-import type { GetStaticPropsContext, GetStaticPropsResult, NextPage } from 'next';
+import type {
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+  NextPage
+} from 'next';
 import { withMainLayoutPage } from '@/components/layouts';
 import { getBlogList, ContentBlogList } from '@/server/content-parser';
 import { DEFAULT_LOCALE } from '@/configs/env';
@@ -9,7 +13,9 @@ type Props = {
   locale: string;
 };
 
-export const getStaticProps = async(ctx: GetStaticPropsContext): Promise<GetStaticPropsResult<Props>> => {
+export const getStaticProps = async (
+  ctx: GetStaticPropsContext
+): Promise<GetStaticPropsResult<Props>> => {
   const { locale = DEFAULT_LOCALE } = ctx;
   const blogs = await getBlogList(locale);
   return {
@@ -23,13 +29,10 @@ export const getStaticProps = async(ctx: GetStaticPropsContext): Promise<GetStat
 const BlogIndexPage: NextPage<Props> = (props) => {
   const { blogs, locale } = props;
   const { total, contents } = blogs;
-  return (
-    <BlogPageList
-      contents={contents}
-      locale={locale}
-      total={total}
-    />
-  );
+  console.log('=================BlogIndexPage==============');
+  console.log({ blogs, locale });
+  console.log('====================================');
+  return <BlogPageList contents={contents} locale={locale} total={total} />;
 };
 
 export default withMainLayoutPage(BlogIndexPage, ({ locale }) => {

@@ -99,7 +99,7 @@ const NowPage: NextPage<Props> = (props) => {
         bgImage={meta.image}
         className="font-courgette text-white util--text-shadow text-center"
       >
-        <div className="container -mt-48">
+        <div className="container -mt-[48px]">
           <h1 className="font-bold text-4xl mb-8 text-white dark:text-white animate-[scale_.25s_ease-in-out]">
             {meta.title}
           </h1>
@@ -110,24 +110,24 @@ const NowPage: NextPage<Props> = (props) => {
       </Banner>
       <Content>
         <CardHero>
-          <section className="py-14 mb-50">
+          <section className="py-14 mb-60">
             <div className="max-w-screen-xl mx-auto md:px-8">
-              <div className="items-center gap-x-12 sm:px-4 md:px-0 lg:flex">
+              <div className="items-center gap-x-28 sm:px-4 md:px-0 lg:flex">
                 <div className="flex-1 sm:hidden lg:block">
                   <Image
                     src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-                    className="md:max-w-lg sm:rounded-lg"
+                    className="md:max-w-lg rounded-12 sm:rounded-lg"
                     alt=""
                   />
                 </div>
-                <div className="max-w-xl px-4 space-y-3 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
-                  <h3 className="text-indigo-600 font-semibold">
+                <div className="max-w-xl px-4 mt-6 sm:px-0 md:mt-0 lg:max-w-2xl">
+                  <h3 className="text-indigo-600 mb-16 font-semibold">
                     Professional services
                   </h3>
-                  <p className="text-gray-800 text-3xl font-semibold sm:text-4xl">
+                  <p className="text-gray-800 lg:hidden xl:flex text-3xl mb-[20px] font-semibold sm:text-4xl">
                     Build your SaaS solution with help from our experts
                   </p>
-                  <p className="mt-3 text-gray-600">
+                  <p className="mt-12 text-gray-600 mb-20">
                     Duis aute irure dolor in reprehenderit in voluptate velit
                     esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
                     occaecat cupidatat non proident, sunt in culpa qui officia
@@ -137,16 +137,14 @@ const NowPage: NextPage<Props> = (props) => {
                   </p>
                   <Link
                     href="javascript:void(0)"
-                    className="inline-flex gap-x-1 items-center text-indigo-600 hover:text-indigo-500 duration-150 font-medium"
+                    className="inline-flex gap-x-1 w-[200px] items-center text-indigo-600 hover:text-indigo-500 duration-150 font-medium"
                   >
-                    <span className="w-px-200 w-3 flex text-indigo-600">
-                      Learn more
-                    </span>
+                    Learn more
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"
-                      className="w-5 h-5"
+                      className="w-5 h-[40px]"
                     >
                       <path
                         fillRule="evenodd"
@@ -162,32 +160,34 @@ const NowPage: NextPage<Props> = (props) => {
           <section className="py-14">
             <div className="max-w-screen-xl mx-auto px-4 md:px-8">
               <div className="max-w-xl">
-                <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
+                <h3 className="text-gray-800 text-4xl font-semibold sm:text-4xl">
                   Meet our talent team
                 </h3>
-                <p className="text-gray-600 mt-3">
+                <p className="text-gray-600 mt-8">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry.Lorem Ipsum has been the industry's
                   standard dummy.
                 </p>
               </div>
-              <div className="mt-12">
-                <ul className="grid gap-8 lg:grid-cols-2">
+              <div className="mt-24">
+                <ul className="grid gap-20 lg:grid-cols-2">
                   {team.map((item, idx) => (
-                    <li key={idx} className="gap-8 sm:flex">
+                    <li key={idx} className="gap-18 sm:flex">
                       <div className="w-full h-60">
-                        <img
+                        <Image
                           src={item.avatar}
-                          className="w-full h-full object-cover object-center shadow-md rounded-xl"
+                          className="w-full h-full object-cover object-center shadow-md rounded-12"
+                          height={260}
+                          width="100%"
                           alt=""
                         />
                       </div>
-                      <div className="mt-4 sm:mt-0">
+                      <div className="mt-8 sm:mt-0">
                         <h4 className="text-lg text-gray-700 font-semibold">
                           {item.name}
                         </h4>
                         <p className="text-indigo-600">{item.title}</p>
-                        <p className="text-gray-600 mt-2">{item.desc}</p>
+                        <p className="text-gray-600 mt-12">{item.desc}</p>
                         <div className="mt-3 flex gap-4 text-gray-400">
                           <Link href={item.twitter}>
                             <svg

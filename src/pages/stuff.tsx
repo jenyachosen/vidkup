@@ -24,9 +24,6 @@ import { getContentMultiLanguage, MDContent } from '@/server/content-parser';
 
 import IconMail from '$/assets/icons/tools/mail.svg';
 import IconBriefcase from '$/assets/icons/tools/briefcase.svg';
-import imgReportDesktop from '$/assets/images/reports/desktop.svg?url';
-import imgReportMobile from '$/assets/images/reports/mobile.svg?url';
-import imgProfile from '$/assets/images/authors/gading-talks.jpeg';
 
 type Props = {
   contents: MDContent;
@@ -92,22 +89,6 @@ const RightDesc = ({ className = 'hidden md:flex' }) => (
       <SVG size={14} className="mr-4" fill="white" src={IconBriefcase} /> Resume
     </Button>
   </div>
-);
-
-const PerformanceReportsImage = ({
-  src = imgReportDesktop,
-  alt = 'Performance Report Desktop'
-}) => {
-  return (
-    <div className="w-full max-w-[700px] mx-auto mt-24">
-      <Image zoomable src={src} alt={alt} width="100%" />
-    </div>
-  );
-};
-
-const PerformanceReportsDesktop = () => <PerformanceReportsImage />;
-const PerformanceReportsMobile = () => (
-  <PerformanceReportsImage src={imgReportMobile} />
 );
 
 const team = [

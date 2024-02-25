@@ -20,8 +20,8 @@ import { useToggler, useUpdated, useScrollListener } from '@/hooks';
 import { DEFAULT_LOCALE, SITE_NAME } from '@/configs/env';
 import clsxm from '@/utils/helpers/clsxm';
 
-import IconAppLogo from '$/assets/icons/app/logo.svg';
-import IconAppLogoSecondary from '$/assets/icons/app/logo-secondary.svg';
+// import IconAppLogo from '$/assets/icons/app/logo.svg';
+// import IconAppLogoSecondary from '$/assets/icons/app/logo-secondary.svg';
 import IconHamburger from '$/assets/icons/tools/hamburger.svg';
 import IconArrowForward from '$/assets/icons/tools/arrow-forward.svg';
 import styles from './styles.module.css';
@@ -151,11 +151,11 @@ const Navbar: FunctionComponent<Props> = (props) => {
     <Fragment>
       <nav className={clsxm(styles.header, headerClass, className)}>
         <div className={styles['header-container']}>
-          <SVG
+          {/* <SVG
             className="inline-block 2xs:hidden mr-8"
             src={theme?.current === 'dark' ? IconAppLogo : IconAppLogoSecondary}
             size={32}
-          />
+          /> */}
           <Link
             href="/"
             className={clsxm(

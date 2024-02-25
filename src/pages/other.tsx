@@ -22,12 +22,6 @@ import {
 } from '@/configs/env';
 import { getContentMultiLanguage, MDContent } from '@/server/content-parser';
 
-import IconMail from '$/assets/icons/tools/mail.svg';
-import IconBriefcase from '$/assets/icons/tools/briefcase.svg';
-import imgReportDesktop from '$/assets/images/reports/desktop.svg?url';
-import imgReportMobile from '$/assets/images/reports/mobile.svg?url';
-import imgProfile from '$/assets/images/authors/gading-talks.jpeg';
-
 type Props = {
   contents: MDContent;
   locale: string;
@@ -81,7 +75,7 @@ const RightDesc = ({ className = 'hidden md:flex' }) => (
       data-umami-event="about_contact"
       className={`${rightDescBtnClasses} bg-primary active:shadow-primary-2 hover:shadow-primary-2`}
     >
-      <SVG size={16} className="mr-4" fill="white" src={IconMail} /> Contact
+      Contact
     </Button>
     <Button
       disableHover
@@ -89,25 +83,9 @@ const RightDesc = ({ className = 'hidden md:flex' }) => (
       data-umami-event="about_resume"
       className={`${rightDescBtnClasses} bg-info active:shadow-info-2 hover:shadow-info-2`}
     >
-      <SVG size={14} className="mr-4" fill="white" src={IconBriefcase} /> Resume
+      Resume
     </Button>
   </div>
-);
-
-const PerformanceReportsImage = ({
-  src = imgReportDesktop,
-  alt = 'Performance Report Desktop'
-}) => {
-  return (
-    <div className="w-full max-w-[700px] mx-auto mt-24">
-      <Image zoomable src={src} alt={alt} width="100%" />
-    </div>
-  );
-};
-
-const PerformanceReportsDesktop = () => <PerformanceReportsImage />;
-const PerformanceReportsMobile = () => (
-  <PerformanceReportsImage src={imgReportMobile} />
 );
 
 const Disqus = dynamic(() => import('@/components/base/Content/Disqus'), {
@@ -138,18 +116,6 @@ const AboutPage: NextPage<Props> = (props) => {
         <CardHero>
           <div className="relative flex justify-around items-start mb-24 md:mb-32 md:-mx-36">
             <LeftDesc />
-            <div className="-mt-100 w-[180px] h-[180px] flex flex-1 items-center justify-center opacity-0 animate-[y-t-25_.5s_ease-in-out_.5s_1_normal_forwards]">
-              <div className="rounded-full overflow-hidden transition-all shadow-lg hover:shadow-xl hover:-mt-12 active:shadow-md active:scale-95 dark:active:shadow-accent dark:hover:shadow-accent">
-                <Image
-                  className="rounded-full cursor-grab active:cursor-grabbing"
-                  src={imgProfile}
-                  alt={AUTHOR_NAME}
-                  width={180}
-                  height={180}
-                  delayLoad={750}
-                />
-              </div>
-            </div>
             <RightDesc />
           </div>
           <div>
@@ -164,14 +130,6 @@ const AboutPage: NextPage<Props> = (props) => {
               </span>{' '}
               Fadhillah Nasution
             </h3>
-            <ContentParser
-              components={{
-                PerformanceReportsDesktop,
-                PerformanceReportsMobile
-              }}
-            >
-              {content}
-            </ContentParser>
           </div>
         </CardHero>
         <Suspense

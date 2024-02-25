@@ -24,9 +24,21 @@ import {
 } from '@/components/layouts';
 import { DEFAULT_LOCALE } from '@/configs/env';
 
+interface LocaleItemProps {
+  code: I18nLocales;
+  active: boolean;
+  pathname: string;
+  asPath: string;
+  onLocaleChange?: (locale: I18nLocales) => {
+    pathname?: string;
+    asPath?: string;
+  };
+}
+
 type Props = {
   contents: MDContent;
   locale: string;
+  onLocaleChange?: LocaleItemProps['onLocaleChange'];
 };
 
 export const getStaticPaths = async (): Promise<GetStaticPathsResult> => {
@@ -43,6 +55,11 @@ export const getStaticProps = async (
   const { locale = DEFAULT_LOCALE, params } = ctx;
   const { slug } = params as any;
   const contents = await getContent(slug, locale);
+
+  console.log('============getStaticProps===========');
+  console.log({ slug, contents });
+  console.log('====================================');
+
   if (contents) {
     return {
       props: {
@@ -67,7 +84,7 @@ const Disqus = dynamic(() => import('@/components/base/Content/Disqus'), {
 });
 
 const BlogDetailPage: NextPage<Props> = (props) => {
-  const { contents, locale } = props;
+  const { contents, locale, onLocaleChange } = props;
   const { meta, content } = contents;
 
   const postPath = `${locale}/blog/${meta.slugOriginal}`;
@@ -77,16 +94,21 @@ const BlogDetailPage: NextPage<Props> = (props) => {
     return _allSlug.length > 1 && _allSlug.every(Boolean);
   }, [meta.slug]);
 
-  const onLocaleChange = useCallback(
-    (i18nLocale: I18nLocales) => ({
-      asPath: meta.slug[i18nLocale]
-    }),
-    []
-  );
+  console.log('==============BlogDetailPage=============');
+  console.log({ onLocaleChange });
+  console.log('====================================');
+
+  // const localeChanges = useCallback(
+  //   (code: string) => {
+  //     return onLocaleChange?.(code as I18nLocales) ?? {};
+  //   },
+  //   [onLocaleChange]
+  // );
 
   return (
     <Fragment>
-      <Navbar localeChange={localeChange} onLocaleChange={onLocaleChange} />
+      {/* <Navbar localeChange={localeChange} onLocaleChange={localeChanges} /> */}
+      <Navbar localeChange={localeChange} />
       <Banner
         bgImage={meta.image}
         className="font-courgette text-white util--text-shadow text-center"

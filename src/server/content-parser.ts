@@ -28,9 +28,11 @@ interface BlogLimit {
   offset?: number;
 }
 
+export type I18nLocales = keyof typeof I18n;
+
 export interface ContentMeta {
   title: string;
-  slug: ContentSlug;
+  slug: I18nLocales;
   slugOriginal: string;
   date: string;
   description: string;

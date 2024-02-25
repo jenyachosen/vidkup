@@ -24,8 +24,6 @@ import { getContentMultiLanguage, MDContent } from '@/server/content-parser';
 
 import IconMail from '$/assets/icons/tools/mail.svg';
 import IconBriefcase from '$/assets/icons/tools/briefcase.svg';
-import imgReportDesktop from '$/assets/images/reports/desktop.svg?url';
-import imgReportMobile from '$/assets/images/reports/mobile.svg?url';
 // import imgProfile from '$/assets/images/authors/gading-talks.jpeg';
 import imgProfile from '$/media/banners/1.jpg';
 
@@ -95,22 +93,6 @@ const RightDesc = ({ className = 'hidden md:flex' }) => (
   </div>
 );
 
-const PerformanceReportsImage = ({
-  src = imgReportDesktop,
-  alt = 'Performance Report Desktop'
-}) => {
-  return (
-    <div className="w-full max-w-[700px] mx-auto mt-24">
-      <Image zoomable src={src} alt={alt} width="100%" />
-    </div>
-  );
-};
-
-const PerformanceReportsDesktop = () => <PerformanceReportsImage />;
-const PerformanceReportsMobile = () => (
-  <PerformanceReportsImage src={imgReportMobile} />
-);
-
 const Disqus = dynamic(() => import('@/components/base/Content/Disqus'), {
   suspense: true,
   ssr: false
@@ -177,26 +159,26 @@ const AboutPage: NextPage<Props> = (props) => {
       </Banner>
       <Content>
         <CardHero>
-          <section className="py-14">
-            <div className="max-w-screen-xl mx-auto px-4 md:px-8">
+          <section className="py-4">
+            <div className="max-w-screen-xl mx-auto px-0 md:px-8">
               <div className="max-w-xl mx-auto sm:text-center">
-                <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
+                <h3 className="text-gray-800 mb-12 text-3xl font-semibold sm:text-4xl">
                   Classes
                 </h3>
-                <p className="text-gray-600 mt-3">
+                <p className="text-gray-600 mb-28 mt-3">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s, when an unknown.
                 </p>
               </div>
               <div className="mt-12">
-                <ul className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+                <ul className="grid gap-20 sm:grid-cols-2 md:grid-cols-3">
                   {team.map((item, idx) => (
-                    <li key={idx}>
-                      <div className="w-full h-60 sm:h-52 md:h-56">
+                    <li key={idx} className="mb-24">
+                      <div className="w-full h-60 mb-12 sm:h-52 md:h-56">
                         <Image
                           src={item.avatar}
-                          className="w-full h-full object-cover object-center shadow-md rounded-xl"
+                          className="w-full h-full object-cover object-center shadow-md rounded-xl rounded-12"
                           alt=""
                           height={260}
                           width="100%"
@@ -215,20 +197,20 @@ const AboutPage: NextPage<Props> = (props) => {
             </div>
           </section>
         </CardHero>
-        <Suspense
+        {/* <Suspense
           fallback={
             <div className="container max-w-5xl mt-40 mx-auto">
               <h4 className="text-center mb-12">Loading Disqus...</h4>
             </div>
           }
         >
-          {/* <Disqus
+          <Disqus
             path="classes"
             identifier="classes"
             title={meta.title}
             locale={locale}
-          /> */}
-        </Suspense>
+          />
+        </Suspense> */}
       </Content>
       <Footer />
     </Fragment>

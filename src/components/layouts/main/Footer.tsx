@@ -45,7 +45,7 @@ const Footer: FunctionComponent<Props> = (props) => {
                 key={url}
                 href={url}
                 delay={300}
-                className={`${color} shadow-lg rounded-8 p-12 mx-4 my-4 hover:-translate-y-4 hover:scale-105`}
+                className={`bg-instagram dark:hover:shadow-instagram shadow-lg rounded-8 p-12 mx-4 my-4 hover:-translate-y-4 hover:scale-105`}
               >
                 <SVG fill="white" size={14} src={logo} />
               </Button>

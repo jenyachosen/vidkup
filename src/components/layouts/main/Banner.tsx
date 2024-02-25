@@ -7,7 +7,7 @@ import { IS_DEV } from '@/configs/env';
 
 export interface Props extends ParallaxProps {
   bgImage: string;
-  height?: number|string;
+  height?: number | string;
   containerClassName?: string;
 }
 
@@ -40,7 +40,8 @@ const Banner: FunctionComponent<PropsWithChildren<Props>> = (props) => {
 Banner.defaultProps = {
   height: '70vh',
   strength: -150,
-  containerClassName: 'container flex flex-col items-center justify-center w-full max-w-5xl'
+  containerClassName:
+    'container flex flex-col items-center justify-center w-full max-w-5xl'
 };
 
 export default Banner;
