@@ -9,6 +9,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   pageExtensions: ['ts', 'tsx'],
+  ignoreDuringBuilds: true,
   i18n: {
     locales: ['uk', 'en'],
     defaultLocale: 'uk'

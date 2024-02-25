@@ -4,7 +4,7 @@ import {
   AUTHOR_FULLNAME,
   BASE_URL,
   DEFAULT_LOCALE,
-  SITE_NAME,
+  SITE_NAME
 } from '@/configs/env';
 import { I18nLocales } from '@/types/contents';
 import cloudinary from '@/utils/helpers/cloudinary';
@@ -26,7 +26,7 @@ export interface Props {
 const language = {
   en: 'English',
   // id: 'Bahasa Indonesia',
-  uk: 'Ukrainian',
+  uk: 'Ukrainian'
 };
 
 const thumbnail = (imageUrl: string) => cloudinary(imageUrl, { scale: 0.1 });
@@ -41,7 +41,7 @@ const Head: FunctionComponent<PropsWithChildren<Props>> = (props) => {
     image = `${BASE_URL}/assets/images/authors/gading-talks.jpeg`,
     date = day().format('YYYY-MM-DD'),
     keywords = '',
-    tags = [],
+    tags = []
   } = meta;
 
   const img = useMemo(() => thumbnail(image), [image]);

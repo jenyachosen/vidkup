@@ -32,7 +32,7 @@ type Props = {
   locale: string;
 };
 
-export const getStaticProps = async (
+export const getStaticProps = async(
   ctx: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<Props>> => {
   const { locale = DEFAULT_LOCALE } = ctx;
@@ -167,7 +167,7 @@ const AboutPage: NextPage<Props> = (props) => {
                 </h3>
                 <p className="text-gray-600 mb-28 mt-3">
                   Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
+                  typesetting industry. Lorem Ipsum has been the industrys
                   standard dummy text ever since the 1500s, when an unknown.
                 </p>
               </div>

@@ -41,7 +41,7 @@ type Props = {
   onLocaleChange?: LocaleItemProps['onLocaleChange'];
 };
 
-export const getStaticPaths = async (): Promise<GetStaticPathsResult> => {
+export const getStaticPaths = async(): Promise<GetStaticPathsResult> => {
   const paths = await getAllBlogPaths();
   return {
     paths,
@@ -49,7 +49,7 @@ export const getStaticPaths = async (): Promise<GetStaticPathsResult> => {
   };
 };
 
-export const getStaticProps = async (
+export const getStaticProps = async(
   ctx: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<Props>> => {
   const { locale = DEFAULT_LOCALE, params } = ctx;
@@ -172,7 +172,7 @@ const BlogDetailPage: NextPage<Props> = (props) => {
 export default withMainLayoutPage(BlogDetailPage, ({ contents, locale }) => ({
   locale,
   meta: {
-    ...contents.meta,
-    slug: `blog/${contents.meta.slugOriginal}`
+    ...contents?.meta,
+    slug: `blog/${contents?.meta.slugOriginal}`
   }
 }));

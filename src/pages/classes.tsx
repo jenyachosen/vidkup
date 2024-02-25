@@ -3,9 +3,8 @@ import type {
   GetStaticPropsResult,
   NextPage
 } from 'next';
-import dynamic from 'next/dynamic';
-import { Fragment, Suspense } from 'react';
-import { CardHero, Image, Button, SVG } from '@/components/base';
+import { Fragment } from 'react';
+import { CardHero, Image } from '@/components/base';
 import {
   Banner,
   Content,
@@ -13,26 +12,15 @@ import {
   Footer,
   withMainLayoutPage
 } from '@/components/layouts';
-import ContentParser from '@/components/base/Content/Parser';
-import {
-  AUTHOR_FULLNAME,
-  AUTHOR_NAME,
-  BASE_URL,
-  DEFAULT_LOCALE
-} from '@/configs/env';
+import { AUTHOR_FULLNAME, AUTHOR_NAME, DEFAULT_LOCALE } from '@/configs/env';
 import { getContentMultiLanguage, MDContent } from '@/server/content-parser';
-
-import IconMail from '$/assets/icons/tools/mail.svg';
-import IconBriefcase from '$/assets/icons/tools/briefcase.svg';
-// import imgProfile from '$/assets/images/authors/gading-talks.jpeg';
-import imgProfile from '$/media/banners/1.jpg';
 
 type Props = {
   contents: MDContent;
   locale: string;
 };
 
-export const getStaticProps = async (
+export const getStaticProps = async(
   ctx: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<Props>> => {
   const { locale = DEFAULT_LOCALE } = ctx;
@@ -44,59 +32,6 @@ export const getStaticProps = async (
     }
   };
 };
-
-const LeftDesc = ({ className = 'hidden md:flex' }) => (
-  <div
-    className={`${className} items-center h-[30px] flex-1 justify-center text-center`}
-  >
-    <div className="group hover:util--text-shadow dark:hover:util--text-shadow-white">
-      <div className="transition-transform duration-200 hover:cursor-pointer group-hover:-translate-y-4">
-        👨🏻‍💻
-      </div>
-      <p className="text-light-20 dark:text-light-20">Writer,</p>
-    </div>
-    <div className="group hover:util--text-shadow dark:hover:util--text-shadow-white mx-24">
-      <div className="transition-transform duration-200 hover:cursor-pointer group-hover:-translate-y-4">
-        🧐
-      </div>
-      <p className="text-light-20 dark:text-light-20">Explorer,</p>
-    </div>
-    <div className="group hover:util--text-shadow dark:hover:util--text-shadow-white">
-      <div className="transition-transform duration-200 hover:cursor-pointer group-hover:-translate-y-4">
-        😴
-      </div>
-      <p className="text-light-20 dark:text-light-20">Slacker</p>
-    </div>
-  </div>
-);
-
-const rightDescBtnClasses =
-  'flex items-center text-sm rounded-4 px-8 py-4 text-white dark:text-white mx-8 hover:no-underline hover:-translate-y-2 hover:shadow-lg active:shadow-sm';
-const RightDesc = ({ className = 'hidden md:flex' }) => (
-  <div className={`${className} items-center h-[30px] flex-1 justify-center`}>
-    <Button
-      disableHover
-      href="mailto:contact@vidkup.com"
-      data-umami-event="about_contact"
-      className={`${rightDescBtnClasses} bg-primary active:shadow-primary-2 hover:shadow-primary-2`}
-    >
-      <SVG size={16} className="mr-4" fill="white" src={IconMail} /> Contact
-    </Button>
-    <Button
-      disableHover
-      href={`${BASE_URL}/resume`}
-      data-umami-event="about_resume"
-      className={`${rightDescBtnClasses} bg-info active:shadow-info-2 hover:shadow-info-2`}
-    >
-      <SVG size={14} className="mr-4" fill="white" src={IconBriefcase} /> Resume
-    </Button>
-  </div>
-);
-
-const Disqus = dynamic(() => import('@/components/base/Content/Disqus'), {
-  suspense: true,
-  ssr: false
-});
 
 const AboutPage: NextPage<Props> = (props) => {
   const { contents, locale } = props;
@@ -167,7 +102,7 @@ const AboutPage: NextPage<Props> = (props) => {
                 </h3>
                 <p className="text-gray-600 mb-28 mt-3">
                   Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
+                  typesetting industry. Lorem Ipsum has been the industrys
                   standard dummy text ever since the 1500s, when an unknown.
                 </p>
               </div>
@@ -197,20 +132,6 @@ const AboutPage: NextPage<Props> = (props) => {
             </div>
           </section>
         </CardHero>
-        {/* <Suspense
-          fallback={
-            <div className="container max-w-5xl mt-40 mx-auto">
-              <h4 className="text-center mb-12">Loading Disqus...</h4>
-            </div>
-          }
-        >
-          <Disqus
-            path="classes"
-            identifier="classes"
-            title={meta.title}
-            locale={locale}
-          />
-        </Suspense> */}
       </Content>
       <Footer />
     </Fragment>

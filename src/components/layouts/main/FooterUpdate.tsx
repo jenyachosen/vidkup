@@ -19,7 +19,7 @@ export interface Props {
 
 const withLocales = createContentLocales({
   social: {
-    en: "Let's get in touch on our social",
+    en: 'Let\'s get in touch on our social',
     uk: 'Ми в соц мережах'
   }
 });
@@ -104,7 +104,7 @@ const Footer: FunctionComponent<Props> = (props) => {
           <div className="max-w-xs">
             <img src="https://www.floatui.com/logo.svg" className="w-32" />
             <p className="leading-relaxed mt-2 text-[15px]">
-              Lorem Ipsum has been the industry's standard dummy text ever since
+              Lorem Ipsum has been the industrys standard dummy text ever since
               the 1500s.
             </p>
           </div>

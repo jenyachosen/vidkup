@@ -19,7 +19,7 @@ export interface Props {
 
 const withLocales = createContentLocales({
   social: {
-    en: "Let's get in touch on our social",
+    en: 'Let\'s get in touch on our social',
     uk: 'Ми в соц мережах'
   }
 });

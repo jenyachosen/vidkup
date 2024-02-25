@@ -4,7 +4,7 @@ import {
   Post,
   QuotedPost,
   ThreadsAPI,
-  ThreadsHdProfilePicVersion,
+  ThreadsHdProfilePicVersion
 } from 'threads-api';
 
 export const targetUsername = 'gadingnst';
@@ -55,7 +55,7 @@ function getContents(_post: Post | QuotedPost) {
   }
   return {
     caption,
-    imgs,
+    imgs
   };
 }
 

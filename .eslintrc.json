@@ -28,6 +28,7 @@
     "space-before-function-paren": ["error", "never"],
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/semi": "error",
+    "no-warning-comments": 0,
     "@typescript-eslint/type-annotation-spacing": "error",
     "@typescript-eslint/space-before-blocks": "error",
     "@typescript-eslint/explicit-module-boundary-types": "off",

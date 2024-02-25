@@ -21,7 +21,7 @@ type Props = {
   locale: string;
 };
 
-export const getStaticProps = async (
+export const getStaticProps = async(
   ctx: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<Props>> => {
   const { locale = DEFAULT_LOCALE } = ctx;
@@ -40,7 +40,7 @@ const team = [
       'https://images.unsplash.com/photo-1579017331263-ef82f0bbc748?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=685&q=80',
     name: 'Martiana dialan',
     title: 'Product designer',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesettin industry. Lorem Ipsum has been the industry's standard dummy",
+    desc: 'Lorem Ipsum is simply dummy text of the printing and typesettin industry. Lorem Ipsum has been the industry\'s standard dummy',
     linkedin: 'javascript:void(0)',
     twitter: 'javascript:void(0)',
     github: 'javascript:void(0)'
@@ -50,7 +50,7 @@ const team = [
       'https://images.unsplash.com/photo-1623605931891-d5b95ee98459?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80',
     name: 'Micheal colorand',
     title: 'Software engineer',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesettin industry. Lorem Ipsum has been the industry's standard dummy",
+    desc: 'Lorem Ipsum is simply dummy text of the printing and typesettin industry. Lorem Ipsum has been the industry\'s standard dummy',
     linkedin: 'javascript:void(0)',
     twitter: 'javascript:void(0)',
     github: 'javascript:void(0)'
@@ -60,7 +60,7 @@ const team = [
       'https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
     name: 'Daniel martin',
     title: 'Product designer',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesettin industry. Lorem Ipsum has been the industry's standard dummy",
+    desc: 'Lorem Ipsum is simply dummy text of the printing and typesettin industry. Lorem Ipsum has been the industry\'s standard dummy',
     linkedin: 'javascript:void(0)',
     twitter: 'javascript:void(0)',
     github: 'javascript:void(0)'
@@ -70,18 +70,11 @@ const team = [
       'https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80',
     name: 'Vicky tanson',
     title: 'Product manager',
-    desc: "Lorem Ipsum is simply dummy text of the printing and typesettin industry. Lorem Ipsum has been the industry's standard dummy",
+    desc: 'Lorem Ipsum is simply dummy text of the printing and typesettin industry. Lorem Ipsum has been the industry\'s standard dummy',
     linkedin: 'javascript:void(0)',
     twitter: 'javascript:void(0)',
     github: 'javascript:void(0)'
   }
-];
-
-const servicesItems = [
-  'Mobile development',
-  'UI/UX Design',
-  'web development',
-  'SEO'
 ];
 
 // const Disqus = dynamic(() => import('@/components/base/Content/Disqus'), {
@@ -165,7 +158,7 @@ const NowPage: NextPage<Props> = (props) => {
                 </h3>
                 <p className="text-gray-600 mt-8">
                   Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry.Lorem Ipsum has been the industry's
+                  typesetting industry.Lorem Ipsum has been the industrys
                   standard dummy.
                 </p>
               </div>

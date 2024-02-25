@@ -13,7 +13,7 @@ type Props = {
   locale: string;
 };
 
-export const getStaticProps = async (
+export const getStaticProps = async(
   ctx: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<Props>> => {
   const { locale = DEFAULT_LOCALE } = ctx;

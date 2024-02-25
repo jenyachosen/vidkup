@@ -33,7 +33,7 @@ type Props = {
   locale: string;
 };
 
-export const getStaticProps = async (
+export const getStaticProps = async(
   ctx: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<Props>> => {
   const { locale = DEFAULT_LOCALE } = ctx;
@@ -207,8 +207,9 @@ const HomePage: NextPage<Props> = (props) => {
               </div>
             </div>
           </section> */}
+          {/* VIDEO SECTION BELOW */}
           <section>
-            {false ? (
+            {
               <div className="fixed inset-0 w-full h-full flex items-center justify-center">
                 <div
                   className="absolute inset-0 w-full h-full bg-black/50"
@@ -217,7 +218,7 @@ const HomePage: NextPage<Props> = (props) => {
                 <div className="px-4 relative">
                   <button
                     className="w-12 h-12 mb-5 rounded-full duration-150 bg-gray-800 hover:bg-gray-700 text-white"
-                    onClick={() => setVideoPopUp(false)}
+                    onClick={() => setVideoPopUp(!isVideoPoppedUp)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -231,7 +232,7 @@ const HomePage: NextPage<Props> = (props) => {
                   <video
                     className="rounded-lg w-full max-w-2xl"
                     controls
-                    autoPlay={true}
+                    autoPlay={false}
                   >
                     <source
                       src="https://raw.githubusercontent.com/sidiDev/remote-assets/main/FloatUI.mp4"
@@ -240,9 +241,7 @@ const HomePage: NextPage<Props> = (props) => {
                   </video>
                 </div>
               </div>
-            ) : (
-              ''
-            )}
+            }
           </section>
           <div className="my-32 px-6 py-12 text-center md:px-12 lg:text-left">
             <div className="w-100 mx-auto sm:max-w-2xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl">
