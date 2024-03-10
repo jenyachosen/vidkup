@@ -68,6 +68,10 @@ const withLocales = createContentLocales({
     en: 'Stuff',
     uk: 'Команда'
   },
+  blog: {
+    en: 'Blog',
+    uk: 'Блог'
+  },
   contact: {
     en: 'Contact',
     uk: 'Контакти'
@@ -80,6 +84,7 @@ export const menus = [
   { label: 'floorball', href: '/floorball' },
   { label: 'media', href: '/media' },
   { label: 'stuff', href: '/stuff' },
+  { label: 'blog', href: '/blog' },
   { label: 'contact', href: '/contact' }
 ];
 
@@ -113,7 +118,8 @@ const Navbar: FunctionComponent<Props> = (props) => {
   const [transparent, setTransparent] = useState(true);
   const [modalClass, setModalClass] = useState('');
   const [modalVisibility, modalToggler] = useToggler();
-  const { pathname, locale, asPath } = useRouter();
+  const router = useRouter();
+  const { pathname, locale, asPath } = router;
   const [theme] = useAppTheme();
   const locales = useMemo(() => withLocales(locale), [locale]);
 
@@ -143,9 +149,9 @@ const Navbar: FunctionComponent<Props> = (props) => {
     setModalClass(newClass);
   }, [modalVisibility]);
 
-  // console.log('=============Navbar==============');
-  // console.log({ locale });
-  // console.log('====================================');
+  console.log('=============Navbar==============');
+  console.log({ locale, router });
+  console.log('====================================');
 
   return (
     <Fragment>
@@ -204,6 +210,7 @@ const Navbar: FunctionComponent<Props> = (props) => {
                   | 'floorball'
                   | 'media'
                   | 'stuff'
+                  | 'blog'
                   | 'contact',
                   string
                 >;

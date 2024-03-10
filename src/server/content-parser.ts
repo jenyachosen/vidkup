@@ -151,7 +151,7 @@ export async function getAllBlogMeta(
   const postsPath = path.join(contentsDir, 'posts', language);
   const slugPaths = await Fs.readdir(postsPath).catch(() => []);
   const result = await Promise.all(
-    slugPaths.map(async(slug) => {
+    slugPaths.map(async (slug) => {
       const meta = await getBlogMeta(slug, language);
       return { meta, locale: language };
     })
@@ -165,7 +165,7 @@ export async function getAllBlogMeta(
  */
 export async function getAllBlogPaths(): Promise<
   GetStaticPathsResult['paths']
-  > {
+> {
   const paths = await Promise.all(Object.keys(I18n).map(getAllBlogMeta));
   return paths.flat(1).map(({ meta, locale }) => ({
     params: {
@@ -246,7 +246,7 @@ export async function getContent(
 ): Promise<MDContent> {
   const filePath = path.join(contentsDir, 'posts', language, slug);
   const fileContents = await Fs.readFile(`${filePath}.md`, 'utf8').catch(
-    async(err) => {
+    async (err) => {
       if (err.code === 'ENOENT' && err.message.includes('.md')) {
         try {
           const _result = await Fs.readFile(`${filePath}.mdx`, 'utf8');

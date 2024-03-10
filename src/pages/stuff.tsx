@@ -30,7 +30,7 @@ type Props = {
   locale: string;
 };
 
-export const getStaticProps = async(
+export const getStaticProps = async (
   ctx: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<Props>> => {
   const { locale = DEFAULT_LOCALE } = ctx;
@@ -166,10 +166,10 @@ const AboutPage: NextPage<Props> = (props) => {
           <section className="py-14">
             <div className="max-w-screen-xl mx-auto px-4 text-center md:px-8">
               <div className="max-w-xl mx-auto">
-                <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
+                <h3 className="text-gray-800 mb-12 text-3xl font-semibold sm:text-4xl">
                   Meet our team
                 </h3>
-                <p className="text-gray-600 mt-3">
+                <p className="text-gray-600 mt-3 mb-24">
                   Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry.Lorem Ipsum has been the industrys
                   standard dummy.
@@ -179,7 +179,7 @@ const AboutPage: NextPage<Props> = (props) => {
                 <ul className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
                   {team.map((item, idx) => (
                     <li key={idx}>
-                      <div className="w-24 h-24 mx-auto">
+                      <div className="w-24 mb-12 h-24 mx-auto">
                         <Image
                           height={200}
                           src={item.avatar}
@@ -188,10 +188,10 @@ const AboutPage: NextPage<Props> = (props) => {
                         />
                       </div>
                       <div className="mt-2">
-                        <h4 className="text-gray-700 font-semibold sm:text-lg">
+                        <h4 className="text-gray-700 mb-8 font-semibold sm:text-lg">
                           {item.name}
                         </h4>
-                        <p className="text-indigo-600">{item.title}</p>
+                        <p className="text-indigo-600 mb-4">{item.title}</p>
                         <p className="text-gray-600 mt-2">{item.desc}</p>
                         <div className="mt-4 flex justify-center gap-4 text-gray-400">
                           <a href={item.twitter}>

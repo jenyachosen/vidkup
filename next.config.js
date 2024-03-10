@@ -6,11 +6,13 @@ const webpack = require('./webpack.config');
 const nextConfig = {
   headers,
   webpack,
+  basePath: '',
   reactStrictMode: true,
   swcMinify: true,
   pageExtensions: ['ts', 'tsx'],
   ignoreDuringBuilds: true,
   i18n: {
+    // locales: ['uk', 'en'],
     locales: ['uk', 'en'],
     defaultLocale: 'uk'
   },

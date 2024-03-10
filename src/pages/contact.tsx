@@ -22,7 +22,7 @@ type Props = {
   locale: string;
 };
 
-export const getStaticProps = async(
+export const getStaticProps = async (
   ctx: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<Props>> => {
   const { locale = DEFAULT_LOCALE } = ctx;
@@ -35,12 +35,12 @@ export const getStaticProps = async(
   };
 };
 
-const servicesItems = [
-  'Mobile development',
-  'UI/UX Design',
-  'web development',
-  'SEO'
-];
+// const servicesItems = [
+//   'Mobile development',
+//   'UI/UX Design',
+//   'web development',
+//   'SEO'
+// ];
 
 // const Disqus = dynamic(() => import('@/components/base/Content/Disqus'), {
 //   suspense: true,
@@ -68,26 +68,21 @@ const NowPage: NextPage<Props> = (props) => {
       </Banner>
       <Content>
         <CardHero>
-          <main className="flex overflow-hidden">
-            <div className="flex-1 hidden lg:block">
-              <img
-                src="https://images.unsplash.com/photo-1697135807547-5fa9fd22d9ec?auto=format&fit=crop&q=80&w=3387&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                className="w-full h-screen object-cover"
-              />
-            </div>
-            <div className="py-12 flex-1 lg:flex lg:justify-center lg:h-screen lg:overflow-auto">
-              <div className="max-w-lg flex-1 mx-auto px-4 text-gray-600">
-                <div>
-                  <h3 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
-                    Get in touch
-                  </h3>
-                  <p className="mt-3">
-                    We’d love to hear from you! Please fill out the form bellow.
-                  </p>
-                </div>
+          <main className="relative py-28 bg-gray-900">
+            <div className="relative z-10 max-w-screen-xl mx-auto text-gray-600 sm:px-4 md:px-8">
+              <div className="max-w-lg space-y-3 px-4 sm:mx-auto sm:text-center sm:px-0">
+                <h3 className="text-cyan-400 font-semibold">Contact</h3>
+                <p className="text-white text-3xl font-semibold sm:text-4xl">
+                  Get in touch
+                </p>
+                <p className="text-gray-300">
+                  We’d love to hear from you! Please fill out the form bellow.
+                </p>
+              </div>
+              <div className="mt-12 mx-auto px-4 p-8 bg-white sm:max-w-lg sm:px-8 sm:rounded-xl">
                 <form
                   onSubmit={(e) => e.preventDefault()}
-                  className="space-y-5 mt-12 lg:pb-12"
+                  className="space-y-5"
                 >
                   <div>
                     <label className="font-medium">Full name</label>
@@ -124,32 +119,6 @@ const NowPage: NextPage<Props> = (props) => {
                     </div>
                   </div>
                   <div>
-                    <label className="font-medium">Services</label>
-                    <ul className="grid gap-y-2 gap-x-6 flex-wrap grid-cols-2 mt-3">
-                      {servicesItems.map((item, idx) => (
-                        <li key={idx} className="flex gap-x-3 text-sm">
-                          <div>
-                            <input
-                              id={`service-${idx}`}
-                              type="checkbox"
-                              className="checkbox-item peer hidden"
-                            />
-                            <label
-                              htmlFor={`service-${idx}`}
-                              className="relative flex w-5 h-5 bg-white peer-checked:bg-indigo-600 rounded-md border ring-offset-2 ring-indigo-600 duration-150 peer-active:ring cursor-pointer after:absolute after:inset-x-0 after:top-[3px] after:m-auto after:w-1.5 after:h-2.5 after:border-r-2 after:border-b-2 after:border-white after:rotate-45"
-                            ></label>
-                          </div>
-                          <label
-                            htmlFor={`service-${idx}`}
-                            className="cursor-pointer"
-                          >
-                            {item}
-                          </label>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
                     <label className="font-medium">Message</label>
                     <textarea
                       required
@@ -162,6 +131,13 @@ const NowPage: NextPage<Props> = (props) => {
                 </form>
               </div>
             </div>
+            <div
+              className="absolute inset-0 blur-[118px] max-w-lg h-[800px] mx-auto sm:max-w-3xl sm:h-[400px]"
+              style={{
+                background:
+                  'linear-gradient(106.89deg, rgba(192, 132, 252, 0.11) 15.73%, rgba(14, 165, 233, 0.41) 15.74%, rgba(232, 121, 249, 0.26) 56.49%, rgba(79, 70, 229, 0.4) 115.91%)'
+              }}
+            ></div>
           </main>
         </CardHero>
         {/* <Suspense

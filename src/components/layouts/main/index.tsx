@@ -13,6 +13,7 @@ export type UnknownProps = Record<string, unknown>;
 
 const MainLayout: FunctionComponent<PropsWithChildren<Props>> = (props) => {
   const { children, locale, meta } = props;
+
   const title = meta?.title?.includes(SITE_NAME)
     ? meta?.title
     : `${meta?.title} | ${SITE_NAME}`;

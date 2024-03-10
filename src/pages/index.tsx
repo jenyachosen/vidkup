@@ -26,6 +26,8 @@ import {
 import generateRSSFeed from '@/server/feed-rss';
 import createContentLocales from '@/utils/helpers/locales';
 import { liveYoutube } from '@/constants';
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
 type Props = {
   contents: MDContent;
@@ -33,7 +35,7 @@ type Props = {
   locale: string;
 };
 
-export const getStaticProps = async(
+export const getStaticProps = async (
   ctx: GetStaticPropsContext
 ): Promise<GetStaticPropsResult<Props>> => {
   const { locale = DEFAULT_LOCALE } = ctx;
@@ -64,7 +66,7 @@ const withLocales = createContentLocales({
     en: 'Our team',
     uk: 'Наша команда'
   },
-  thansksVisit: {
+  thanksVisit: {
     en: 'Thanks for visiting us',
     uk: 'Дякую що навідались до нас'
   },
@@ -154,95 +156,12 @@ const HomePage: NextPage<Props> = (props) => {
 
       <Content>
         <CardHero className="min-h-[0px]">
-          {/* <ContentParser className="text-2xl text-center">
-            {content}
-          </ContentParser> */}
-          {/* <section className="py-28">
-            <div className="max-w-screen-xl mx-auto text-gray-600 gap-x-12 items-center justify-between overflow-hidden md:flex md:px-8">
-              <div className="flex-none space-y-5 px-4 sm:max-w-lg md:px-0 lg:max-w-xl">
-                <h1 className="text-sm text-indigo-600 font-medium">
-                  Over 200 successful deals
-                </h1>
-                <h2 className="text-4xl text-gray-800 font-extrabold md:text-5xl">
-                  We help startups to grow and make money
-                </h2>
-                <p>
-                  Sed ut perspiciatis unde omnis iste natus voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam, eaque
-                  ipsa quae.
-                </p>
-                <div className="items-center gap-x-3 space-y-3 sm:flex sm:space-y-0">
-                  <a
-                    href="javascript:void(0)"
-                    className="block py-2 px-4 text-center text-white font-medium bg-indigo-600 duration-150 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg shadow-lg hover:shadow-none"
-                  >
-                    Lets get started
-                  </a>
-                  <a
-                    href="javascript:void(0)"
-                    className="flex items-center justify-center gap-x-2 py-2 px-4 text-gray-700 hover:text-gray-500 font-medium duration-150 active:bg-gray-100 border rounded-lg md:inline-flex"
-                  >
-                    Get access
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className="w-5 h-5"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-              <div className="flex-none mt-14 md:mt-0 md:max-w-xl">
-                <img
-                  src="https://images.unsplash.com/photo-1573164713619-24c711fe7878?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80"
-                  className=" md:rounded-tl-[108px]"
-                  alt=""
-                />
-              </div>
-            </div>
-          </section> */}
           {/* VIDEO SECTION BELOW */}
-          <section>
-            {
-              <div className="fixed inset-0 w-full h-full flex items-center justify-center">
-                <div
-                  className="absolute inset-0 w-full h-full bg-black/50"
-                  onClick={() => setVideoPopUp(false)}
-                ></div>
-                <div className="px-4 relative">
-                  <button
-                    className="w-12 h-12 mb-5 rounded-full duration-150 bg-gray-800 hover:bg-gray-700 text-white"
-                    onClick={() => setVideoPopUp(!isVideoPoppedUp)}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className="w-5 h-5 m-auto"
-                    >
-                      <path d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z" />
-                    </svg>
-                  </button>
-                  <video
-                    className="rounded-lg w-full max-w-2xl"
-                    controls
-                    autoPlay={false}
-                  >
-                    <source
-                      src="https://raw.githubusercontent.com/sidiDev/remote-assets/main/FloatUI.mp4"
-                      type="video/mp4"
-                    />
-                  </video>
-                </div>
-              </div>
-            }
-          </section>
+          <LiteYouTubeEmbed
+            id="a8iuMJt_GIo"
+            poster="hqdefault"
+            title="What’s new in Material Design for the web (Chrome Dev Summit 2019)"
+          />
           <div className="my-32 px-6 py-12 text-center md:px-12 lg:text-left">
             <div className="w-100 mx-auto sm:max-w-2xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl">
               <div className="grid items-center gap-12 lg:grid-cols-2">
@@ -282,7 +201,7 @@ const HomePage: NextPage<Props> = (props) => {
               </div>
             </div>
           </div>
-          <div className="flex flex-wrap justify-center items-center my-20 lg:my-0">
+          {/* <div className="flex flex-wrap justify-center items-center my-20 lg:my-0">
             <Button
               label={`Visit author ${color.split(' ')[0].substring(3)}`}
               disableHover
@@ -293,7 +212,7 @@ const HomePage: NextPage<Props> = (props) => {
             >
               <SVG fill="white" size={14} src={logo} />
             </Button>
-          </div>
+          </div> */}
           <div className="flex justify-center items-center flex-wrap text-center my-16">
             <Button
               disableHover
@@ -307,18 +226,18 @@ const HomePage: NextPage<Props> = (props) => {
               text={locales.ourTeam}
               href="/stuff"
               data-umami-event="homepage_see-classes"
-              className={`${btnClasses} bg-accent active:shadow-accent-2 hover:shadow-accent-2 mx-8`}
+              className={`${btnClasses} bg-primary active:shadow-accent-2 hover:shadow-accent-2 mx-8`}
             />
             <Button
               disableHover
               text={locales.sportsMinistry}
               href="/floorball"
               data-umami-event="homepage_see-portfolio"
-              className={`${btnClasses} bg-info active:shadow-info-2 hover:shadow-info-2`}
+              className={`${btnClasses} bg-primary active:shadow-info-2 hover:shadow-info-2`}
             />
           </div>
           <p className="font-bold text-lg sm:text-xl italic text-center mt-8">
-            {locales.thansksVisit}.
+            {locales.thanksVisit}.
           </p>
           <section className="py-14">
             <div className="max-w-screen-xl mx-auto px-4 md:px-8">

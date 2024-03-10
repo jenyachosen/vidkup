@@ -9,7 +9,7 @@ interface Props {
   path: string;
   title: string;
   identifier: string;
-  locale?: 'en' | 'uk' | string;
+  locale?: 'uk' | 'en' | string;
 }
 
 const Disqus: FunctionComponent<Props> = (props) => {

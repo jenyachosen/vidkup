@@ -63,9 +63,9 @@ if [[ "${2}" == "-en" ]]; then
     SLUG_NAME_ID="null"
 fi
 
-# Handle ID lang
+# Handle UK lang
 if [[ "${2}" == "-id" ]]; then
-    DIST_FOLDER="${POSTPATH}/id"
+    DIST_FOLDER="${POSTPATH}/uk"
     POST_TITLE="${@:3:$(($#-1))}"
     POST_NAME="$(echo ${@:3:$(($#-1))} | sed -e 's/ /-/g' | sed "y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/")"
     FILE_NAME="${POST_NAME}.md"
@@ -133,7 +133,7 @@ initpost_content() {
     echo "title: \"${POST_TITLE}\""
     echo "slug: {"
     echo -e "\ten: ${SLUG_NAME_EN},"
-    echo -e "\tid: ${SLUG_NAME_ID}"
+    echo -e "\tid: ${SLUG_NAME_UK}"
     echo "}"
     echo "date: ${CURRENT_DATE}"
     echo "description: \"An description\""

@@ -1,7 +1,9 @@
 ## Prerequisites
+
 - [NodeJS](https://nodejs.org/en/download/)
 
 ## Ongoing Features
+
 - [x] Dark Mode
 - [x] Color System Documentation
 - [x] Mobile friendly
@@ -28,19 +30,8 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Special Thanks to:
+
 - [Creative Tim](https://demos.creative-tim.com/vue-argon-design-system) (Inspired me to to reproduce their `Design System`)
 - [Vitor Britto](https://github.com/vitorbritto/forcefiles/blob/f0e32299138348247bd2f6ccb3dd51683fa761fd/scripts/initpost.sh) (Inspired me to to reproduce his `./initpost` script)
 - [Marina Aisa](https://marinaaisa.com) (Inspired me to create I18n content)
-- [Ankur Parihar](https://github.com/ankurparihar/readme-pagespeed-insights) (Inspired me to use his repo to generate Pagespeed insight periodically)
 - [Myself](https://github.com/gadingnst/swr-global-state) (Have created a zero-setup global state management library for this repository)
-
-## Support Me
-### Global
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/gadingnst)
-### Indonesia
-- [Trakteer](https://trakteer.id/sutanlab)
-- [Karyakarsa](https://karyakarsa.com/sutanlab)
-
-* * *
-
-Copyright © 2022 by Sutan Gading Fadhillah Nasution

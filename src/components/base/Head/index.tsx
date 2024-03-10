@@ -24,9 +24,9 @@ export interface Props {
 }
 
 const language = {
-  en: 'English',
+  uk: 'Ukrainian',
+  en: 'English'
   // id: 'Bahasa Indonesia',
-  uk: 'Ukrainian'
 };
 
 const thumbnail = (imageUrl: string) => cloudinary(imageUrl, { scale: 0.1 });
