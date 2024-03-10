@@ -19,7 +19,7 @@
     "app:generate:content:threads": "npm run ts-node src/server/threads/get-contents.ts"
   },
   "dependencies": {
-    "@nextui-org/react": "^2.2.9",
+    "@nextui-org/react": "^2.2.10",
     "@vercel/og": "^0.0.27",
     "disqus-react": "^1.1.5",
     "framer-motion": "^10.16.16",
