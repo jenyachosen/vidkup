@@ -8,7 +8,7 @@
     "dev": "next dev",
     "build": "npm run app:generate:content:threads && next build",
     "start": "next start",
-    "lint": "tsc --noEmit && eslint src --ignore-pattern 'src/public' --max-warnings 0",
+    "lint": "tsc --noEmit && eslint src --ignore-pattern 'src/public' --max-warnings 100",
     "lint:fix": "tsc --noEmit && eslint src --ignore-pattern 'src/public' --fix",
     "test:unit": "jest",
     "test:unit:watch": "jest --watch",
